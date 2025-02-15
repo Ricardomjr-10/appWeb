@@ -74,15 +74,25 @@ main {
 #display {
     width: 300px;
     border: 1px solid #000000;
-    margin-top: -70px;
+    margin-top: -55px;
     margin-left: 10px;
     padding: 10px;
     border-radius: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  
-    
+    color: #ffffff;
 }
 
+#nome_clientes {
+    width: 100%;
+    padding: 7px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#cadastrar_clientes {
+  
+}
 
 footer {
     text-align: center;
