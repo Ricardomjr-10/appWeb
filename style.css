@@ -3,3 +3,8 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* cor do body gradiente rosa clara */
+body {
+    background-image: linear-gradient(to left, #d8ecf8, #e593f5);
+}
