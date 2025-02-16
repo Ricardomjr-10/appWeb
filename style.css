@@ -74,7 +74,7 @@ main {
 #display {
     width: 300px;
     border: 1px solid #000000;
-    margin-top: -55px;
+    margin-top: -40px;
     margin-left: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -82,7 +82,7 @@ main {
     color: #ffffff;
 }
 
-#nome_clientes {
+ .inputCadastros{
     width: 100%;
     padding: 7px;
     margin-bottom: 10px;
