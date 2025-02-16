@@ -30,6 +30,7 @@ btnCadastro.addEventListener("click", () => {
     document.getElementById("btns_editar").style.display = "none";
     document.getElementById("cadastros").style.display = "block";
     document.getElementById("tela_mostrar").style.display = "none";
+    document.getElementById("tela_editar").style.display = "none";
  
 });
 
@@ -41,6 +42,7 @@ btnMostrar.addEventListener("click", () => {
     document.getElementById("cadastro_produtos").style.display = "none";
     document.getElementById("cadastro_vendas").style.display = "none";
     document.getElementById("tela_mostrar").style.display = "block";
+    document.getElementById("tela_editar").style.display = "none";
  
 });
 
@@ -48,7 +50,8 @@ btnEditar.addEventListener("click", () => {
     document.getElementById("btns_cadastro").style.display = "none";
     document.getElementById("btns_mostrar").style.display = "none";
     document.getElementById("btns_editar").style.display = "block";
-   ;
+    document.getElementById("tela_mostrar").style.display = "none";
+    document.getElementById("cadastros").style.display = "none";
 });
 
 btns_cadastro_clientes.addEventListener("click", () => {
