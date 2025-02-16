@@ -1,6 +1,13 @@
 const btnCadastro = document.getElementById("cadastro");
 const btnMostrar = document.getElementById("mostrar");
 const btnEditar = document.getElementById("editar");
+const btnHome = document.getElementById("home");
+
+btnHome.addEventListener("click", () => {
+    document.getElementById("btns_cadastro").style.display = "none";
+    document.getElementById("btns_mostrar").style.display = "none";
+    document.getElementById("btns_editar").style.display = "none";
+});
 
 btnCadastro.addEventListener("click", () => {
     document.getElementById("btns_cadastro").style.display = "block";
