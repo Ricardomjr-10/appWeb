@@ -11,6 +11,9 @@ const btns_mostrar_clientes = document.getElementById("btns_mostrar_clientes");
 const btns_mostrar_produtos = document.getElementById("btns_mostrar_produtos");
 const btns_mostrar_vendas = document.getElementById("btns_mostrar_vendas");
 
+const btns_editar_clientes = document.getElementById("btns_editar_clientes");
+const btns_editar_produtos = document.getElementById("btns_editar_produtos");
+
 btnHome.addEventListener("click", () => {
     document.getElementById("btns_cadastro").style.display = "none";
     document.getElementById("btns_mostrar").style.display = "none";
@@ -21,7 +24,8 @@ btnHome.addEventListener("click", () => {
     document.getElementById("mostrar_clientes").style.display = "none";
     document.getElementById("mostrar_produtos").style.display = "none";
     document.getElementById("mostrar_vendas").style.display = "none";
- 
+    document.getElementById("editar_clientes").style.display = "none";
+    document.getElementById("editar_produtos").style.display = "none"; 
 });
 
 btnCadastro.addEventListener("click", () => {
@@ -94,4 +98,15 @@ btns_mostrar_vendas.addEventListener("click", () => {
     document.getElementById("mostrar_produtos").style.display = "none";
     document.getElementById("mostrar_vendas").style.display = "block";
     document.getElementById("cadastros").style.display = "none";
+});
+
+btns_editar_clientes.addEventListener("click", () => {
+    document.getElementById("editar_clientes").style.display = "block";
+    document.getElementById("editar_produtos").style.display = "none";
+    document.getElementById("tela_editar").style.display = "block";
+});
+
+btns_editar_produtos.addEventListener("click", () => {
+    document.getElementById("editar_clientes").style.display = "none";
+    document.getElementById("editar_produtos").style.display = "block";
 });
