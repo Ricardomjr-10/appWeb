@@ -178,3 +178,60 @@ btnCadastrarVendas.addEventListener("click", () => {
     document.getElementById("preco_vendas").value = "";
 });
 
+//mostrar o banco no console sem botao
+
+const btnMostrarClientes = document.getElementById("btns_mostrar_clientes");
+const btnMostrarProdutos = document.getElementById("btns_mostrar_produtos");
+const btnMostrarVendas = document.getElementById("btns_mostrar_vendas");
+
+btnMostrarClientes.addEventListener("click", () => {
+    const transaction = db.transaction(["clientes"], "readonly");
+    const objectStore = transaction.objectStore("clientes");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const clientes = request.result;
+        //mostrar na tela div
+        const resultado = document.querySelector(".resultadoClientes");
+        resultado.innerHTML = "";
+        clientes.forEach((cliente) => {
+            const li = document.createElement("li");
+            li.textContent = cliente.nome;
+            resultado.appendChild(li);
+        });
+    };
+});
+
+btnMostrarProdutos.addEventListener("click", () => {
+    const transaction = db.transaction(["produtos"], "readonly");
+    const objectStore = transaction.objectStore("produtos");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const produtos = request.result;
+        const resultado = document.querySelector(".resultadoProdutos");
+        resultado.innerHTML = "";
+        produtos.forEach((produto) => {
+            const li = document.createElement("li");
+            li.textContent = `${produto.nome} - Preço: ${produto.preco} - Quantidade: ${produto.quantidade}`;
+            resultado.appendChild(li);
+        });
+    };
+});
+
+btnMostrarVendas.addEventListener("click", () => {
+    const transaction = db.transaction(["vendas"], "readonly");
+    const objectStore = transaction.objectStore("vendas");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const vendas = request.result;
+        const resultado = document.querySelector(".resultadoVendas");
+        resultado.innerHTML = "";
+        vendas.forEach((venda) => {
+            const li = document.createElement("li");
+            li.textContent = `${venda.nome_cliente} - ${venda.nome_produto} - Quantidade: ${venda.quantidade} - Preço: ${venda.preco}`;
+            resultado.appendChild(li);
+        });
+    };
+});
+
+
+
