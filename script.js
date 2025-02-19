@@ -37,6 +37,9 @@ const btns_mostrar_vendas = document.getElementById("btns_mostrar_vendas");
 const btns_editar_clientes = document.getElementById("btns_editar_clientes");
 const btns_editar_produtos = document.getElementById("btns_editar_produtos");
 
+const selectClientes = document.getElementById("select_clientes");
+const inputEditarNomeClientes = document.getElementById("editar_nome_clientes");
+
 btnHome.addEventListener("click", () => {
     document.getElementById("btns_cadastro").style.display = "none";
     document.getElementById("btns_mostrar").style.display = "none";
@@ -233,5 +236,22 @@ btnMostrarVendas.addEventListener("click", () => {
     };
 });
 
-
+//escolher clientes para editar no select
+const btnEditarClientes = document.getElementById("editar_clientes");
+btnEditarClientes.addEventListener("click", () => {
+    const transaction = db.transaction(["clientes"], "readonly");
+    const objectStore = transaction.objectStore("clientes");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const clientes = request.result;
+        const select = document.getElementById("select_clientes");
+        select.innerHTML = "";
+        clientes.forEach((cliente) => {
+            const option = document.createElement("option");
+            option.value = cliente.id;
+            option.textContent = cliente.nome;
+            select.appendChild(option);
+        });
+    };
+});
 
