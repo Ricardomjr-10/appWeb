@@ -37,9 +37,6 @@ const btns_mostrar_vendas = document.getElementById("btns_mostrar_vendas");
 const btns_editar_clientes = document.getElementById("btns_editar_clientes");
 const btns_editar_produtos = document.getElementById("btns_editar_produtos");
 
-const selectClientes = document.getElementById("select_clientes");
-const inputEditarNomeClientes = document.getElementById("editar_nome_clientes");
-
 btnHome.addEventListener("click", () => {
     document.getElementById("btns_cadastro").style.display = "none";
     document.getElementById("btns_mostrar").style.display = "none";
@@ -236,17 +233,29 @@ btnMostrarVendas.addEventListener("click", () => {
     };
 });
 
-//escolher clientes para editar no select sem clicar no botao
 
-const transaction = db.transaction(["clientes"], "readonly");
-const objectStore = transaction.objectStore("clientes");
-const request = objectStore.getAll();
-request.onsuccess = () => {
-    const clientes = request.result;
-    clientes.forEach((cliente) => {
-        const option = document.createElement("option");
-        option.value = cliente.nome;
-        option.textContent = cliente.nome;
-        selectClientes.appendChild(option);
-    });
-};
+// escolher o nome do cliente para edicao no select, o nome escolhido aparece no input de edicao de clientes e ao clicar 
+// no botao de edicao ele edita o cliente
+
+const selectClientes = document.getElementById("select_clientes");
+const inputClientes = document.getElementById("editar_nome_clientes");
+const btnEditarClientes = document.getElementById("editar_clientes");
+
+selectClientes.addEventListener("change", () => {
+    const selectedOption = selectClientes.options[selectClientes.selectedIndex];
+    inputClientes.value = selectedOption.text;
+});
+
+btnEditarClientes.addEventListener("click", () => {
+    const selectedOption = selectClientes.options[selectClientes.selectedIndex];
+    const transaction = db.transaction(["clientes"], "readwrite");
+    const objectStore = transaction.objectStore("clientes");
+    const request = objectStore.get(selectedOption.value);
+    request.onsuccess = () => {
+        const cliente = request.result;
+        cliente.nome = inputClientes.value;
+        objectStore.put(cliente);
+    };
+});
+
+   
