@@ -236,22 +236,17 @@ btnMostrarVendas.addEventListener("click", () => {
     };
 });
 
-//escolher clientes para editar no select
-const btnEditarClientes = document.getElementById("editar_clientes");
-btnEditarClientes.addEventListener("click", () => {
-    const transaction = db.transaction(["clientes"], "readonly");
-    const objectStore = transaction.objectStore("clientes");
-    const request = objectStore.getAll();
-    request.onsuccess = () => {
-        const clientes = request.result;
-        const select = document.getElementById("select_clientes");
-        select.innerHTML = "";
-        clientes.forEach((cliente) => {
-            const option = document.createElement("option");
-            option.value = cliente.id;
-            option.textContent = cliente.nome;
-            select.appendChild(option);
-        });
-    };
-});
+//escolher clientes para editar no select sem clicar no botao
 
+const transaction = db.transaction(["clientes"], "readonly");
+const objectStore = transaction.objectStore("clientes");
+const request = objectStore.getAll();
+request.onsuccess = () => {
+    const clientes = request.result;
+    clientes.forEach((cliente) => {
+        const option = document.createElement("option");
+        option.value = cliente.nome;
+        option.textContent = cliente.nome;
+        selectClientes.appendChild(option);
+    });
+};
