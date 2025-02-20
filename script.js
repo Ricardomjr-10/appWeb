@@ -241,10 +241,23 @@ const selectClientes = document.getElementById("select_clientes");
 const inputClientes = document.getElementById("editar_nome_clientes");
 const btnEditarClientes = document.getElementById("btn_editar_clientes");
 
-// selectClientes.addEventListener("change", () => {
-//     const selectedOption = selectClientes.options[selectClientes.selectedIndex];
-//     inputClientes.value = selectedOption.text;
-// });
+selectClientes.addEventListener("change", () => {
+   //pegar os nomes dos clientes no banco de dados e aparecer os nomes no no option do select
+    const transaction = db.transaction(["clientes"], "readonly");
+    const objectStore = transaction.objectStore("clientes");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const clientes = request.result;
+        selectClientes.innerHTML = "";
+        clientes.forEach((cliente) => {
+            const option = document.createElement("option");
+            option.value = cliente.id;
+            option.textContent = cliente.nome;
+            selectClientes.appendChild(option);
+        });
+    };
+ 
+});
 
 btnEditarClientes.addEventListener("click", () => {
     const selectedOption = selectClientes.options[selectClientes.selectedIndex];
