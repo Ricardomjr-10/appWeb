@@ -241,21 +241,32 @@ const selectClientes = document.getElementById("select_clientes");
 const inputClientes = document.getElementById("editar_nome_clientes");
 const btnEditarClientes = document.getElementById("editar_clientes");
 
-selectClientes.addEventListener("change", () => {
-    const selectedOption = selectClientes.options[selectClientes.selectedIndex];
-    inputClientes.value = selectedOption.text;
-});
+// selectClientes.addEventListener("change", () => {
+//     const selectedOption = selectClientes.options[selectClientes.selectedIndex];
+//     inputClientes.value = selectedOption.text;
+// });
 
 btnEditarClientes.addEventListener("click", () => {
     const selectedOption = selectClientes.options[selectClientes.selectedIndex];
     const transaction = db.transaction(["clientes"], "readwrite");
     const objectStore = transaction.objectStore("clientes");
-    const request = objectStore.get(selectedOption.value);
-    request.onsuccess = () => {
-        const cliente = request.result;
-        cliente.nome = inputClientes.value;
-        objectStore.put(cliente);
+
+    const clienteAtualizado = {
+        id: selectedOption.value,
+        nome: inputClientes.value
     };
+
+    const request = objectStore.put(clienteAtualizado);
+
+    request.onsuccess = () => {
+        console.log("Cliente editado com sucesso!");
+    };
+
+    request.onerror = () => {
+        console.error("Erro ao editar o cliente:", request.error);
+    };
+
+
 });
 
-   
+
