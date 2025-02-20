@@ -239,7 +239,7 @@ btnMostrarVendas.addEventListener("click", () => {
 
 const selectClientes = document.getElementById("select_clientes");
 const inputClientes = document.getElementById("editar_nome_clientes");
-const btnEditarClientes = document.getElementById("editar_clientes");
+const btnEditarClientes = document.getElementById("btn_editar_clientes");
 
 // selectClientes.addEventListener("change", () => {
 //     const selectedOption = selectClientes.options[selectClientes.selectedIndex];
