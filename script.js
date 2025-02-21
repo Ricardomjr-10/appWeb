@@ -233,31 +233,18 @@ btnMostrarVendas.addEventListener("click", () => {
     };
 });
 
-// Function to delete a client by ID
-function deletarCliente(id) {
-    const transaction = db.transaction(["clientes"], "readwrite");
-    const objectStore = transaction.objectStore("clientes");
-    objectStore.delete(id);
-}
+    const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
+    const btnExcluirProdutos = document.getElementById("excluir_produtos");
 
-// Function to delete a product by ID
-function deletarProduto(id) {
-    const transaction = db.transaction(["produtos"], "readwrite");
-    const objectStore = transaction.objectStore("produtos");
-    objectStore.delete(id);
-}
+    btnExcluirClientes.addEventListener("click", () => {
+        const transaction = db.transaction(["clientes"], "readwrite");
+        const objectStore = transaction.objectStore("clientes");
+        objectStore.delete(1);
+    });
 
-const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
-btnExcluirClientes.addEventListener("click", () => {
-    const id = document.getElementById("excluir_nome_clientes").value;
-    deletarCliente(id);
-    document.getElementById("excluir_nome_clientes").value = "";
-});
-
-const btnExcluirProdutos = document.getElementById("btn_excluir_produtos");
-btnExcluirProdutos.addEventListener("click", () => {
-    const id = document.getElementById("excluir_nome_produtos").value;
-    deletarProduto(id);
-    document.getElementById("excluir_nome_produtos").value = "";
-});
-
+    btnExcluirProdutos.addEventListener("click", () => {
+        const transaction = db.transaction(["produtos"], "readwrite");
+        const objectStore = transaction.objectStore("produtos");
+        objectStore.delete(1);
+    });
+    
