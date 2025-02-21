@@ -235,14 +235,17 @@ btnMostrarVendas.addEventListener("click", () => {
 
     const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
     const btnExcluirProdutos = document.getElementById("excluir_produtos");
-
+    
 
     btnExcluirClientes.addEventListener("click", () => {
         const transaction = db.transaction(["clientes"], "readwrite");
         const objectStore = transaction.objectStore("clientes");
-        let inputExcluirClientes = document.getElementById("excluir_nome_clientes").value;
-        objectStore.delete(Number(inputExcluirClientes));
-        inputExcluirClientes.value = "";
+        let excluirClientes = document.getElementById("excluir_nome_clientes").value;
+        objectStore.delete(Number(excluirClientes));
+        //apagar o input
+        document.getElementById("excluir_nome_clientes").value = "";
+        //mostrar o nome do cliente excluido no alert
+        alert(`Cliente ${excluirClientes} excluido com sucesso!`);
     });
 
     btnExcluirProdutos.addEventListener("click", () => {
