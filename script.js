@@ -251,6 +251,11 @@ btnMostrarVendas.addEventListener("click", () => {
     btnExcluirProdutos.addEventListener("click", () => {
         const transaction = db.transaction(["produtos"], "readwrite");
         const objectStore = transaction.objectStore("produtos");
-        objectStore.delete(1);
+        let excluirProdutos = document.getElementById("excluir_nome_produtos").value;
+        objectStore.delete(Number(excluirProdutos));
+        //apagar o input
+        document.getElementById("excluir_nome_produtos").value = "";
+        //mostrar o nome do produto excluido no alert
+        alert(`Produto ${excluirProdutos} excluido com sucesso!`);
     });
 
