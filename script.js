@@ -16,7 +16,7 @@ request.onupgradeneeded = (event) => {
 
 request.onsuccess = (event) => {
     db = event.target.result;
-    console.log("banco de dados aberto com sucesso", db);
+    // console.log("banco de dados aberto com sucesso", db);
 }
 
 
@@ -292,4 +292,37 @@ btnMostrarVendas.addEventListener("click", () => {
         //mostrar o nome do produto excluido no alert
         alert(`Produto ${excluirProdutos} excluido com sucesso!`);
     });
+
+    const relatorio = document.getElementById("relatorio");
+    const relatorioValorTotalProdutos = document.createElement("li");
+    const relatorioValorTotalVendas = document.createElement("li");
+    const btnImprimir = document.getElementById("imprimir");
+
+    btnImprimir.addEventListener("click", () => {
+        
+
+        const transactionProdutos = db.transaction(["produtos"], "readonly");
+        const objectStoreProdutos = transactionProdutos.objectStore("produtos");
+        const requestProdutos = objectStoreProdutos.getAll();
+        requestProdutos.onsuccess = () => {
+            const produtos = requestProdutos.result;
+            const valorTotalProdutos = produtos.reduce((acumulador, produto) => acumulador + (produto.preco * produto.quantidade), 0);
+            // console.log(valorTotalProdutos);
+            relatorioValorTotalProdutos.textContent = `Valor total dos produtos cadastrados: ${valorTotalProdutos.toFixed(2)}`;
+            relatorio.appendChild(relatorioValorTotalProdutos);
+        };
+    
+        const transactionVendas = db.transaction(["vendas"], "readonly");
+        const objectStoreVendas = transactionVendas.objectStore("vendas");
+        const requestVendas = objectStoreVendas.getAll();
+        requestVendas.onsuccess = () => {
+            const vendas = requestVendas.result;
+            const valorTotalVendas = vendas.reduce((acumulador, venda) => acumulador + (venda.preco * venda.quantidade), 0);
+            // console.log(valorTotalVendas);
+            relatorioValorTotalVendas.textContent = `Valor total das vendas cadastradas: ${valorTotalVendas.toFixed(2)}`;
+            relatorio.appendChild(relatorioValorTotalVendas);
+        };
+    });
+
+
 

@@ -54,9 +54,9 @@
                     <label for="nome_produtos" id="label_produtos"></label>
                     <input type="text" id="nome_produtos" class="inputCadastros" placeholder="Nome" required>
                     <label for="preco_produtos" id="label_produtos"></label>
-                    <input type="text" id="preco_produtos" class="inputCadastros" placeholder="Preço" required>
+                    <input type="number" id="preco_produtos" class="inputCadastros" placeholder="Preço" required>
                     <label for="quantidade_produtos" id="label_produtos"></label>
-                    <input type="text" id="quantidade_produtos" class="inputCadastros" placeholder="Quantidade" required>
+                    <input type="number" id="quantidade_produtos" class="inputCadastros" placeholder="Quantidade" required>
                     <button id="cadastrar_produtos" class="btn_lateral">Cadastrar</button>
                 </div>
 
@@ -67,9 +67,9 @@
                     <label for="nome_produtos_vendas" id="label_vendas"></label>
                     <input type="text" id="nome_produtos_vendas" class="inputCadastros" placeholder="Nome do produto" required>
                     <label for="quantidade_vendas" id="label_vendas"></label>
-                    <input type="text" id="quantidade_vendas" class="inputCadastros" placeholder="Quantidade" required>
+                    <input type="number" id="quantidade_vendas" class="inputCadastros" placeholder="Quantidade" required>
                     <label for="preco_vendas" id="label_vendas"></label>
-                    <input type="text" id="preco_vendas" class="inputCadastros" placeholder="Preço" required>
+                    <input type="number" id="preco_vendas" class="inputCadastros" placeholder="Preço" required>
                     <button id="cadastrar_vendas" class="btn_lateral">Cadastrar</button>
                 </div>
             </div>
@@ -108,6 +108,11 @@
             </div>
         </div>
     </aside>
+    <div id="relat">
+        <h2>Relatório</h2>
+        <button id="imprimir">Imprimir</button>
+        <ul id="relatorio"></ul>
+    </div>
     </main>
     <footer>
         <p id="p_footer">Desenvolvido por Marido da Zu</p>
