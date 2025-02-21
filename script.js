@@ -58,6 +58,7 @@ btnCadastro.addEventListener("click", () => {
     document.getElementById("cadastros").style.display = "block";
     document.getElementById("tela_mostrar").style.display = "none";
     document.getElementById("tela_editar").style.display = "none";
+    
  
 });
 
@@ -79,6 +80,10 @@ btnEditar.addEventListener("click", () => {
     document.getElementById("btns_editar").style.display = "block";
     document.getElementById("tela_mostrar").style.display = "none";
     document.getElementById("cadastros").style.display = "none";
+    document.getElementById("tela_editar").style.display = "block";
+    document.getElementById("cadastro_clientes").style.display = "none";
+    document.getElementById("cadastro_produtos").style.display = "none";
+    document.getElementById("cadastro_vendas").style.display = "none";
 });
 
 btns_cadastro_clientes.addEventListener("click", () => {
@@ -142,16 +147,26 @@ const btnCadastrarVendas = document.getElementById("cadastrar_vendas");
 
 btnCadastrarClientes.addEventListener("click", () => {
     const nome = document.getElementById("nome_clientes").value;
+    if (!nome) {
+        alert("Por favor, insira um nome válido.");
+        return;
+    }
     const transaction = db.transaction(["clientes"], "readwrite");
     const objectStore = transaction.objectStore("clientes");
     objectStore.add({nome});
     document.getElementById("nome_clientes").value = "";
+    alert("Cliente cadastrado com sucesso!");
 });
 
 btnCadastrarProdutos.addEventListener("click", () => {
     const nome = document.getElementById("nome_produtos").value;
     const preco = document.getElementById("preco_produtos").value;
     const quantidade = document.getElementById("quantidade_produtos").value;
+
+    if (!nome || !preco || !quantidade) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
     
     const transaction = db.transaction(["produtos"], "readwrite");
     const objectStore = transaction.objectStore("produtos");
@@ -160,6 +175,7 @@ btnCadastrarProdutos.addEventListener("click", () => {
     document.getElementById("nome_produtos").value = "";
     document.getElementById("preco_produtos").value = "";
     document.getElementById("quantidade_produtos").value = "";
+    alert("Produto cadastrado com sucesso!");
 });
 
 btnCadastrarVendas.addEventListener("click", () => {
@@ -167,6 +183,11 @@ btnCadastrarVendas.addEventListener("click", () => {
     const nome_produto = document.getElementById("nome_produtos_vendas").value;
     const quantidade = document.getElementById("quantidade_vendas").value;
     const preco = document.getElementById("preco_vendas").value;
+
+    if (!nome_cliente || !nome_produto || !quantidade || !preco) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+    }
     
     const transaction = db.transaction(["vendas"], "readwrite");
     const objectStore = transaction.objectStore("vendas");
@@ -176,6 +197,7 @@ btnCadastrarVendas.addEventListener("click", () => {
     document.getElementById("nome_produtos_vendas").value = "";
     document.getElementById("quantidade_vendas").value = "";
     document.getElementById("preco_vendas").value = "";
+    alert("Venda cadastrada com sucesso!");
 });
 
 //mostrar o banco no console sem botao
