@@ -195,7 +195,7 @@ btnMostrarClientes.addEventListener("click", () => {
         resultado.innerHTML = "";
         clientes.forEach((cliente) => {
             const li = document.createElement("li");
-            li.textContent = `ID: ${cliente.id} - Nome: ${cliente.nome}`;
+            li.textContent = `${cliente.id} - ${cliente.nome}`;
             resultado.appendChild(li);
         });
     };
@@ -211,7 +211,7 @@ btnMostrarProdutos.addEventListener("click", () => {
         resultado.innerHTML = "";
         produtos.forEach((produto) => {
             const li = document.createElement("li");
-            li.textContent = `${produto.nome} - Preço: ${produto.preco} - Quantidade: ${produto.quantidade}`;
+            li.textContent = `${produto.id} - ${produto.nome} - Preço: ${produto.preco} - Quantidade: ${produto.quantidade}`;
             resultado.appendChild(li);
         });
     };
@@ -227,7 +227,7 @@ btnMostrarVendas.addEventListener("click", () => {
         resultado.innerHTML = "";
         vendas.forEach((venda) => {
             const li = document.createElement("li");
-            li.textContent = `${venda.nome_cliente} - ${venda.nome_produto} - Quantidade: ${venda.quantidade} - Preço: ${venda.preco}`;
+            li.textContent = `${venda.id} - ${venda.nome_cliente} - ${venda.nome_produto} - Quantidade: ${venda.quantidade} - Preço: ${venda.preco}`;
             resultado.appendChild(li);
         });
     };
