@@ -270,3 +270,20 @@ btnExcluirProdutos.addEventListener("click", () => {
     const id = document.getElementById("excluir_nome_produtos").value;
     excluirProduto(id);
 });
+
+
+btnMostrarClientes.addEventListener("click", () => {
+    const transaction = db.transaction(["clientes"], "readonly");
+    const objectStore = transaction.objectStore("clientes");
+    const request = objectStore.getAll();
+    request.onsuccess = () => {
+        const clientes = request.result;
+        const resultado = document.querySelector(".resultadoClientes");
+        resultado.innerHTML = "";
+        clientes.forEach((cliente) => {
+            const li = document.createElement("li");
+            li.textContent = `ID: ${cliente.id} - Nome: ${cliente.nome}`;
+            resultado.appendChild(li);
+        });
+    };
+});
