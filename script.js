@@ -234,40 +234,30 @@ btnMostrarVendas.addEventListener("click", () => {
 });
 
 // Function to delete a client by ID
-function excluirCliente(id) {
+function deletarCliente(id) {
     const transaction = db.transaction(["clientes"], "readwrite");
     const objectStore = transaction.objectStore("clientes");
-    const request = objectStore.delete(id);
-    request.onsuccess = () => {
-        console.log(`Cliente com ID ${id} excluído com sucesso.`);
-    };
-    request.onerror = (event) => {
-        console.error(`Erro ao excluir cliente com ID ${id}:`, event.target.error);
-    };
+    objectStore.delete(id);
 }
 
 // Function to delete a product by ID
-function excluirProduto(id) {
+function deletarProduto(id) {
     const transaction = db.transaction(["produtos"], "readwrite");
     const objectStore = transaction.objectStore("produtos");
-    const request = objectStore.delete(id);
-    request.onsuccess = () => {
-        console.log(`Produto com ID ${id} excluído com sucesso.`);
-    };
-    request.onerror = (event) => {
-        console.error(`Erro ao excluir produto com ID ${id}:`, event.target.error);
-    };
+    objectStore.delete(id);
 }
 
 const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
 btnExcluirClientes.addEventListener("click", () => {
     const id = document.getElementById("excluir_nome_clientes").value;
-    excluirCliente(id);
+    deletarCliente(id);
+    document.getElementById("excluir_nome_clientes").value = "";
 });
 
 const btnExcluirProdutos = document.getElementById("btn_excluir_produtos");
 btnExcluirProdutos.addEventListener("click", () => {
     const id = document.getElementById("excluir_nome_produtos").value;
-    excluirProduto(id);
+    deletarProduto(id);
+    document.getElementById("excluir_nome_produtos").value = "";
 });
 
