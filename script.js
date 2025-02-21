@@ -263,6 +263,12 @@ btnMostrarVendas.addEventListener("click", () => {
         const transaction = db.transaction(["clientes"], "readwrite");
         const objectStore = transaction.objectStore("clientes");
         let excluirClientes = document.getElementById("excluir_nome_clientes").value;
+
+        if (!excluirClientes) {
+            alert("Por favor, digite o ID do cliente.");
+            return;
+        }
+
         objectStore.delete(Number(excluirClientes));
         //apagar o input
         document.getElementById("excluir_nome_clientes").value = "";
@@ -274,6 +280,12 @@ btnMostrarVendas.addEventListener("click", () => {
         const transaction = db.transaction(["produtos"], "readwrite");
         const objectStore = transaction.objectStore("produtos");
         let excluirProdutos = document.getElementById("excluir_nome_produtos").value;
+
+        if (!excluirProdutos) {
+            alert("Por favor, digite o ID do produto.");
+            return;
+        }
+
         objectStore.delete(Number(excluirProdutos));
         //apagar o input
         document.getElementById("excluir_nome_produtos").value = "";
