@@ -236,10 +236,13 @@ btnMostrarVendas.addEventListener("click", () => {
     const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
     const btnExcluirProdutos = document.getElementById("excluir_produtos");
 
+
     btnExcluirClientes.addEventListener("click", () => {
         const transaction = db.transaction(["clientes"], "readwrite");
         const objectStore = transaction.objectStore("clientes");
-        objectStore.delete(1);
+        let inputExcluirClientes = document.getElementById("excluir_nome_clientes").value;
+        objectStore.delete(Number(inputExcluirClientes));
+        inputExcluirClientes.value = "";
     });
 
     btnExcluirProdutos.addEventListener("click", () => {
@@ -247,4 +250,4 @@ btnMostrarVendas.addEventListener("click", () => {
         const objectStore = transaction.objectStore("produtos");
         objectStore.delete(1);
     });
-    
+
