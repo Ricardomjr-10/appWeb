@@ -105,6 +105,16 @@ h1, h2, p {
 text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
+#relat {
+    width: 300px;
+   margin-left: -250px;
+   
+}
+
+#relat h2 {
+    color: #ffffff;
+}
+
 li {
     list-style: none;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
