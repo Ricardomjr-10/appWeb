@@ -78,6 +78,7 @@ btnCadastro.addEventListener("click", () => {
     document.getElementById("tela_editar").style.display = "none";
     document.getElementById("relat").style.display = "none";
     document.querySelector('section').style.display = "block";
+    document.getElementById("editar_vendas").style.display = "none";
  
 });
 
@@ -92,6 +93,7 @@ btnMostrar.addEventListener("click", () => {
     document.getElementById("tela_editar").style.display = "none";
     document.getElementById("relat").style.display = "none";
     document.querySelector('section').style.display = "block";
+    document.getElementById("editar_vendas").style.display = "none";
 });
 
 btnEditar.addEventListener("click", () => {
@@ -106,6 +108,7 @@ btnEditar.addEventListener("click", () => {
     document.getElementById("cadastro_vendas").style.display = "none";
     document.getElementById("relat").style.display = "none";
     document.querySelector('section').style.display = "block";
+    document.getElementById("editar_vendas").style.display = "none";
 });
 
 btns_cadastro_clientes.addEventListener("click", () => {
@@ -154,11 +157,13 @@ btns_editar_clientes.addEventListener("click", () => {
     document.getElementById("editar_clientes").style.display = "block";
     document.getElementById("editar_produtos").style.display = "none";
     document.getElementById("tela_editar").style.display = "block";
+    document.getElementById("editar_vendas").style.display = "none";
 });
 
 btns_editar_produtos.addEventListener("click", () => {
     document.getElementById("editar_clientes").style.display = "none";
     document.getElementById("editar_produtos").style.display = "block";
+    document.getElementById("editar_vendas").style.display = "none";
 });
 
 btns_editar_vendas.addEventListener("click", () => {
