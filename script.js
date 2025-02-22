@@ -38,6 +38,7 @@ const btns_mostrar_vendas = document.getElementById("btns_mostrar_vendas");
 
 const btns_editar_clientes = document.getElementById("btns_editar_clientes");
 const btns_editar_produtos = document.getElementById("btns_editar_produtos");
+const btns_editar_vendas = document.getElementById("btns_editar_vendas");
 
 btnRelatorio.addEventListener("click", () => {
     divRelat.style.display = "block";
@@ -159,6 +160,12 @@ btns_editar_produtos.addEventListener("click", () => {
     document.getElementById("editar_clientes").style.display = "none";
     document.getElementById("editar_produtos").style.display = "block";
 });
+
+btns_editar_vendas.addEventListener("click", () => {
+    document.getElementById("editar_clientes").style.display = "none";
+    document.getElementById("editar_produtos").style.display = "none";
+    document.getElementById("editar_vendas").style.display = "block";
+})
 //conectando com o banco de dados
 
 
