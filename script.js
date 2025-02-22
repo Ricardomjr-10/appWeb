@@ -25,7 +25,7 @@ const btnCadastro = document.getElementById("cadastro");
 const btnMostrar = document.getElementById("mostrar");
 const btnEditar = document.getElementById("editar");
 const btnHome = document.getElementById("home");
-const btnRelatorio = document.getElementById("relatorio");
+const btnRelatorio = document.getElementById("relatorios");
 const divRelat = document.getElementById("relat");
 
 const btns_cadastro_clientes = document.getElementById("btns_cadastro_clientes");
@@ -41,6 +41,15 @@ const btns_editar_produtos = document.getElementById("btns_editar_produtos");
 
 btnRelatorio.addEventListener("click", () => {
     divRelat.style.display = "block";
+    document.querySelector('section').style.display = "none";
+    document.getElementById("cadastro_clientes").style.display = "none";
+    document.getElementById("cadastro_produtos").style.display = "none";
+    document.getElementById("cadastro_vendas").style.display = "none";
+    document.getElementById("mostrar_clientes").style.display = "none";
+    document.getElementById("mostrar_produtos").style.display = "none";
+    document.getElementById("mostrar_vendas").style.display = "none";
+    document.getElementById("editar_clientes").style.display = "none";
+    document.getElementById("editar_produtos").style.display = "none";
 })
 
 btnHome.addEventListener("click", () => {
@@ -56,6 +65,7 @@ btnHome.addEventListener("click", () => {
     document.getElementById("editar_clientes").style.display = "none";
     document.getElementById("editar_produtos").style.display = "none"; 
     document.getElementById("relat").style.display = "none";
+   
 });
 
 btnCadastro.addEventListener("click", () => {
@@ -65,7 +75,8 @@ btnCadastro.addEventListener("click", () => {
     document.getElementById("cadastros").style.display = "block";
     document.getElementById("tela_mostrar").style.display = "none";
     document.getElementById("tela_editar").style.display = "none";
-    
+    document.getElementById("relat").style.display = "none";
+    document.querySelector('section').style.display = "block";
  
 });
 
@@ -78,7 +89,8 @@ btnMostrar.addEventListener("click", () => {
     document.getElementById("cadastro_vendas").style.display = "none";
     document.getElementById("tela_mostrar").style.display = "block";
     document.getElementById("tela_editar").style.display = "none";
- 
+    document.getElementById("relat").style.display = "none";
+    document.querySelector('section').style.display = "block";
 });
 
 btnEditar.addEventListener("click", () => {
@@ -91,6 +103,8 @@ btnEditar.addEventListener("click", () => {
     document.getElementById("cadastro_clientes").style.display = "none";
     document.getElementById("cadastro_produtos").style.display = "none";
     document.getElementById("cadastro_vendas").style.display = "none";
+    document.getElementById("relat").style.display = "none";
+    document.querySelector('section').style.display = "block";
 });
 
 btns_cadastro_clientes.addEventListener("click", () => {
