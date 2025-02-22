@@ -51,6 +51,7 @@ btnRelatorio.addEventListener("click", () => {
     document.getElementById("mostrar_vendas").style.display = "none";
     document.getElementById("editar_clientes").style.display = "none";
     document.getElementById("editar_produtos").style.display = "none";
+    document.getElementById("editar_vendas").style.display = "none";
 })
 
 btnHome.addEventListener("click", () => {
@@ -66,6 +67,7 @@ btnHome.addEventListener("click", () => {
     document.getElementById("editar_clientes").style.display = "none";
     document.getElementById("editar_produtos").style.display = "none"; 
     document.getElementById("relat").style.display = "none";
+    document.getElementById("editar_vendas").style.display = "none";
    
 });
 
