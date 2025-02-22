@@ -290,6 +290,7 @@ btnMostrarVendas.addEventListener("click", () => {
 
     const btnExcluirClientes = document.getElementById("btn_excluir_clientes");
     const btnExcluirProdutos = document.getElementById("excluir_produtos");
+    const btnExcluirVendas = document.getElementById("excluir_vendas");
     
 
     btnExcluirClientes.addEventListener("click", () => {
@@ -325,6 +326,23 @@ btnMostrarVendas.addEventListener("click", () => {
         //mostrar o nome do produto excluido no alert
         alert(`Produto ${excluirProdutos} excluido com sucesso!`);
     });
+
+    btnExcluirVendas.addEventListener("click", () => {
+        const transaction = db.transaction(["vendas"], "readwrite");
+        const objectStore = transaction.objectStore("vendas");
+        let excluirVendas = document.getElementById("excluir_nome_vendas").value;
+
+        if (!excluirVendas) {
+            alert("Por favor, digite o ID da venda.");
+            return;
+        }
+
+        objectStore.delete(Number(excluirVendas));
+        //apagar o input
+        document.getElementById("excluir_nome_vendas").value = "";
+        //mostrar o nome da venda excluido no alert
+        alert(`Venda ${excluirVendas} excluida com sucesso!`);
+    })
 
     const relatorio = document.getElementById("relatorio");
     const relatorioValorTotalProdutos = document.createElement("li");
